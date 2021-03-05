@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,8 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/products', function () {
     return view('products.index');
-});
+})->name('products.index');
 
 Route::get('/products/create', function () {
     return view('products.create');
 })->name('products.create');
+
+Route::post('/products', function (Request $request) {
+    
+    #$description = $request->input('description');
+    #$description = $request->input('price');
+    return $request->all();
+
+})->name('products.store');
