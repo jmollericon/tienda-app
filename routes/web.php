@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Models\Product;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,9 +24,9 @@ Route::get('/products/create', function () {
 })->name('products.create');
 
 Route::post('/products', function (Request $request) {
-    
-    #$description = $request->input('description');
-    #$description = $request->input('price');
-    return $request->all();
-
+    $new_product = new Product;
+    $new_product->description = $request->input('description');
+    $new_product->price = $request->input('price');
+    $new_product->save();
+    return redirect()->route('products.index');
 })->name('products.store');
