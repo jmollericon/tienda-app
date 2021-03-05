@@ -31,3 +31,9 @@ Route::post('/products', function (Request $request) {
     $new_product->save();
     return redirect()->route('products.index')->with('info', 'Product created successfully');
 })->name('products.store');
+
+Route::delete('/products/{id}', function ($id) {
+    $product = Product::findOrFail($id);
+    $product->delete();
+    return redirect()->route('products.index')->with('info', 'Product deleted successfully');
+})->name('products.destroy');
