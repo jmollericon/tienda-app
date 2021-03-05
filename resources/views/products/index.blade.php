@@ -20,6 +20,22 @@
             @if(session('info'))
               <div class="alert alert-success">{{ session('info') }}</div>
             @endif
+            <table class="table table-hover table-sm">
+              <thead>
+                <tr>
+                  <th>Description</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($products as $p)
+                  <tr>
+                    <td>{{ $p->description }}</td>
+                    <td>{{ $p->price }}</td>
+                  </tr>
+                @endforeach
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

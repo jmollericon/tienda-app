@@ -16,7 +16,8 @@ use App\Models\Product;
 */
 
 Route::get('/products', function () {
-    return view('products.index');
+    $products = Product::orderBy('created_at', 'desc')->get(); # all();
+    return view('products.index', compact('products'));
 })->name('products.index');
 
 Route::get('/products/create', function () {
