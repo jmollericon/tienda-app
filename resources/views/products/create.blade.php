@@ -13,8 +13,8 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            List of producos
-            <a href="{{ route('products.create') }}" class="btn btn-success btn-sm float-right">New product</a>
+            Create product
+            <a href="" class="btn btn-success btn-sm float-right">Nuevo producto</a>
           </div>
           <div class="card-body">
           </div>
