@@ -37,3 +37,16 @@ Route::delete('/products/{id}', function ($id) {
     $product->delete();
     return redirect()->route('products.index')->with('info', 'Product deleted successfully');
 })->name('products.destroy');
+
+Route::get('/products/{id}/edit', function ($id) {
+    $product = Product::find($id);
+    return view('products.edit', compact('product'));
+})->name('products.edit');
+
+Route::put('/products/{id}', function (Request $req, $id) {
+    $product = Product::findOrFail($id);
+    $product->description = $req->input('description');
+    $product->price = $req->input('price');
+    $product->save();
+    return redirect()->route('products.index')->with('info', 'Product updated successfully');
+})->name('products.update');
