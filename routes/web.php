@@ -28,5 +28,5 @@ Route::post('/products', function (Request $request) {
     $new_product->description = $request->input('description');
     $new_product->price = $request->input('price');
     $new_product->save();
-    return redirect()->route('products.index');
+    return redirect()->route('products.index')->with('info', 'Product created successfully');
 })->name('products.store');
